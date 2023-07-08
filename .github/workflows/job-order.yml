@@ -1,0 +1,34 @@
+name: parallel-jobs-order-example
+
+on: 
+  push:
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Doing work parallel with job2"
+
+  job2:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Doing work parallel with job1"
+
+  job3:
+    runs-on: ubuntu-latest
+    needs: job1
+    steps:
+      - run: echo "Running when job-1 done"
+
+  job4:
+    runs-on: ubuntu-latest
+    needs: [job2, job3]
+    steps:
+      - run: echo "Running when job2 & job3 done"
+  
+  job5:
+    runs-on: ubuntu-latest
+    if: ${{ always() }}
+    needs: job1
+    steps:
+      - run: echo "Running when job1 completed with status ${{ needs.job1.result }}"
