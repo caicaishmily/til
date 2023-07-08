@@ -20,6 +20,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Event
-        run: echo "Triggered event"
+        run: echo "Triggered event $GITHUB_EVENT_NAME"
       - name: Say Hello
         run: echo "Hello world!"
