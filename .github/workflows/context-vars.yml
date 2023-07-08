@@ -1,0 +1,28 @@
+name: context-veriable-example
+on: 
+  push:
+  pull_request:
+
+jobs:
+  use-contexts:
+    strategy:
+      matrix:
+        greeting: [Hello, Howdy, Hey]
+    runs-on: ubuntu-latest
+    steps:
+      - 
+        name: Print greeting
+        run: echo $GREETING
+        env:
+          GREETING: ${{ matrix.greeting }}
+      
+      -
+        name: Do work with a secret
+        run: ./workRequiringASecret.sh
+        env:
+          A_SECRET: ${{ secrets.A_SECRET }}
+
+      - 
+        name: Run only for pulls
+        # if: ${{ github.event == "pull_request" }}
+        run: echo "Triggered by a pull request"
