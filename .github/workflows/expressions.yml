@@ -41,7 +41,9 @@ jobs:
 
       -
         name: From JSON 
-        env: ${{ fromJSON('{"FAVORITE_FRUIT": "APPLE", "FAVORITE_COLOR": "BLUE"}') }}
+        env: 
+          FAVORITE_FRUIT: ${{ fromJSON('{"FAVORITE_FRUIT":"APPLE","FAVORITE_COLOR":"BLUE"}').FAVORITE_FRUIT }}
+          FAVORITE_COLOR: ${{ fromJSON('{"FAVORITE_FRUIT":"APPLE","FAVORITE_COLOR":"BLUE"}').FAVORITE_COLOR }}
         run: echo "I would like a ${FAVORITE_COLOR} ${FAVORITE_FRUIT}"
 
       - 
@@ -54,7 +56,7 @@ jobs:
         run: echo "You will always see this"
       -
         name: Canceled
-        if: ${{ canceled() }}
+        if: ${{ cancelled() }}
         run: echo "You canceled the workflow"
       -
         name: Failure
