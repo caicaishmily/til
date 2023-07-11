@@ -8,7 +8,7 @@ Today I Learned
 
 ## Tests
 
-这是一个行内代码块：`print("Hello, World!")`
+这是一个行内代码块：```print("Hello, World!")```
 
 ```
 print("Hello, World!")
