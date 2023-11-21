@@ -15,3 +15,9 @@ textarea {
   form-sizing: normal;
 }
 ```
+
+### How to build an image without the Docker cache
+
+```bash
+docker build --no-cache .
+```
