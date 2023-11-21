@@ -6,10 +6,12 @@ Today I Learned
 
 - [BroadcastChannel](./BroadcastChannel.md)
 
-## Tests
+## Others
 
-这是一个行内代码块：```print("Hello, World!")```
+### Textareas with auto-increasing height using CSS
 
-```
-print("Hello, World!")
+```css
+textarea {
+  form-sizing: normal;
+}
 ```
